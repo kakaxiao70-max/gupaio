@@ -256,6 +256,15 @@ def health():
     return {"ok": True}
 
 
+@app.get("/debug")
+def debug():
+    deepseek_key = os.getenv("DEEPSEEK_API_KEY", "")
+    return {
+        "DEEPSEEK_API_KEY_set": bool(deepseek_key),
+        "DEEPSEEK_API_KEY_prefix": deepseek_key[:8] + "..." if deepseek_key else "NOT SET",
+    }
+
+
 @app.post("/api/analyze")
 def analyze(req: AnalyzeRequest):
     try:
