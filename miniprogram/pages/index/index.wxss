@@ -1,0 +1,73 @@
+.page {
+  min-height: 100vh;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.panel,
+.result {
+  background: #ffffff;
+  border: 1rpx solid #dfe7e3;
+  border-radius: 8rpx;
+  padding: 28rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #4c5f58;
+  margin-bottom: 14rpx;
+}
+
+.input {
+  height: 88rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #cdd9d4;
+  border-radius: 6rpx;
+  background: #fbfdfc;
+  font-size: 36rpx;
+  box-sizing: border-box;
+}
+
+.primary {
+  margin-top: 24rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #0f766e;
+  color: #ffffff;
+  font-size: 30rpx;
+}
+
+.error {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  border-radius: 6rpx;
+  background: #fff1f2;
+  color: #b42318;
+  font-size: 28rpx;
+}
+
+.result {
+  margin-top: 24rpx;
+}
+
+.result-title {
+  margin-bottom: 18rpx;
+  color: #17201d;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.analysis {
+  display: block;
+  color: #26332f;
+  font-size: 29rpx;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.empty {
+  margin-top: 24rpx;
+  color: #66756f;
+  font-size: 28rpx;
+  line-height: 1.6;
+}

@@ -1,0 +1,27 @@
+<view class="page">
+  <view class="panel">
+    <view class="label">股票代码</view>
+    <input
+      class="input"
+      value="{{stockCode}}"
+      maxlength="6"
+      type="number"
+      placeholder="例如 688256"
+      bindinput="onInput"
+    />
+    <button class="primary" loading="{{loading}}" disabled="{{loading}}" bindtap="analyze">
+      {{loading ? '分析中' : '开始分析'}}
+    </button>
+  </view>
+
+  <view wx:if="{{error}}" class="error">{{error}}</view>
+
+  <view wx:if="{{analysis}}" class="result">
+    <view class="result-title">分析结果</view>
+    <text class="analysis" selectable="true">{{analysis}}</text>
+  </view>
+
+  <view wx:else class="empty">
+    输入股票代码后，系统会获取最近行情和新闻，再生成大白话分析。
+  </view>
+</view>
