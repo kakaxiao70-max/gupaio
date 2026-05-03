@@ -1,5 +1,4 @@
-fastapi
-uvicorn
+streamlit
 yfinance
 feedparser
 pandas
