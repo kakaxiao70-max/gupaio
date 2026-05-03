@@ -224,12 +224,16 @@ def analyze_stock_with_llm(
     }
 
     def _call() -> str:
+        url = f"{config['base_url']}/chat/completions"
+        print(f"[LLM] POST {url}")
+        print(f"[LLM] api_key set: {bool(api_key)}, prefix: {api_key[:8] if api_key else 'N/A'}...")
         resp = requests.post(
-            f"{config['base_url']}/chat/completions",
+            url,
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
             json=payload,
             timeout=60,
         )
+        print(f"[LLM] status: {resp.status_code}, body[:200]: {resp.text[:200]}")
         resp.raise_for_status()
         return resp.json()["choices"][0]["message"]["content"]
 
@@ -256,11 +260,19 @@ def health():
 def analyze(req: AnalyzeRequest):
     try:
         stock_code = normalize_stock_code(req.stock_code)
+        print(f"[analyze] stock_code={stock_code}, provider={req.provider}")
+
         history_df = get_recent_history(stock_code, days=5)
+        print(f"[analyze] history rows: {len(history_df)}")
+
         news_df = get_latest_news(stock_code, limit=5)
+        print(f"[analyze] news rows: {len(news_df)}")
+
         analysis = analyze_stock_with_llm(stock_code, history_df, news_df, provider=req.provider)
         return {"ok": True, "stock_code": stock_code, "analysis": analysis}
     except Exception as exc:
+        import traceback
+        traceback.print_exc()
         return {"ok": False, "error": str(exc)}
 
 
