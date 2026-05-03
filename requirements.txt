@@ -1,6 +1,7 @@
 streamlit
+fastapi
+uvicorn
 yfinance
-feedparser
 pandas
 requests
 python-dotenv
