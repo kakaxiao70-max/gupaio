@@ -1,6 +1,6 @@
 fastapi
 uvicorn
-akshare
+yfinance
 pandas
 requests
 python-dotenv
